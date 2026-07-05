@@ -87,7 +87,7 @@ export default function LandingPage() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
           </span>
-          <Typewriter text="Created by Sajib, a local AI that respects your privacy and keeps your data secure." />
+          <Typewriter text="Created by Sajib and Mohaddis, a local AI that respects your privacy and keeps your data secure." />
         </div>
 
         <h1 className="max-w-4xl text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-tight mb-6 dark:text-white">
@@ -110,7 +110,7 @@ export default function LandingPage() {
             Connect Gmail Now
           </Link>
           <button className="w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-semibold rounded-xl transition-all backdrop-blur-sm bg-opacity-80 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-700 dark:bg-opacity-80">
-            Upload here
+            Learn More
           </button>
         </div>
 
