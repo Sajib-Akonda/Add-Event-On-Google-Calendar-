@@ -1,0 +1,6 @@
+
+@ Mohaddis task:
+    Improve the design and overall appearance of the Cart page.
+    When users click "Connect Gmail", redirect them to the Registration page. ✅
+    Create a comprehensive and well-structured README.md file for the project. ✅
+    Improve the Home page by redesigning and enhancing the Navigation Bar for a better user experience. ✅
