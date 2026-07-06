@@ -35,8 +35,8 @@ export default function LandingPage() {
           background: `conic-gradient(from 0deg at ${mousePosition.x}px ${mousePosition.y}px, rgba(79,70,229,${glowAlpha}), rgba(168,85,247,${glowAlpha}), rgba(236,72,153,${glowAlpha}), rgba(234,179,8,${glowAlpha}), rgba(20,184,166,${glowAlpha}), rgba(79,70,229,${glowAlpha}))`,
 
           // This fades the edges out so it looks like a soft orb instead of a harsh circle
-          WebkitMaskImage: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, black 10%, transparent 80%)`,
-          maskImage: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, black 10%, transparent 80%)`,
+          WebkitMaskImage: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, black 10%, transparent 80%)`,
+          maskImage: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, black 10%, transparent 80%)`,
         }}
       />
 
