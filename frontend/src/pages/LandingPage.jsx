@@ -66,7 +66,7 @@ export default function LandingPage() {
           <ThemeToggle />
           <Link
             to="/login"
-            className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors dark:text-slate-300 dark:hover:text-indigo-400"
+            className="text-sm font-medium px-5 py-2.5 rounded-full border border-slate-300 bg-indigo-700 text-white shadow-sm hover:bg-slate-800 transition-colors dark:border-slate-700 dark:bg-slate-600 dark:text-slate-100 dark:hover:bg-slate-800"
           >
             Login
           </Link>
@@ -104,7 +104,7 @@ export default function LandingPage() {
 
         <div className="flex flex-col sm:flex-row gap-4 w-full justify-center max-w-md">
           <Link
-            to="/dashboard"
+            to="/register"
             className="w-full sm:w-auto px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-center shadow-lg shadow-indigo-200 transition-all hover:-translate-y-0.5 dark:shadow-indigo-950"
           >
             Connect Gmail Now
