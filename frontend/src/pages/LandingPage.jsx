@@ -90,16 +90,17 @@ export default function LandingPage() {
           <Typewriter text="Created by Sajib and Mohaddis, a local AI that respects your privacy and keeps your data secure." />
         </div>
 
-        <h1 className="max-w-4xl text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-tight mb-6 dark:text-white">
-          Your inbox is not a{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500">
-            calendar.
+        <h1 className="max-w-5xl text-5xl md:text-7xl font-black tracking-tight text-slate-900 leading-[1.1] mb-6 dark:text-white">
+          Your Inbox Holds Your Plans. <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400">
+            Let AI Schedule Them.
           </span>
         </h1>
 
-        <p className="max-w-2xl text-lg md:text-xl text-slate-500 mb-10 leading-relaxed dark:text-slate-400">
-          Connect your Gmail and let local AI automatically extract events,
-          meetings, and deadlines straight into your Google Calendar.
+        <p className="max-w-3xl text-xl md:text-2xl font-medium text-slate-500/90 mb-12 leading-relaxed dark:text-slate-400/90">
+          Stop playing calendar detective. AutoPrep AI securely analyzes your
+          incoming corporate invites, RSVPs, and floating thread deadlines
+          locally on your machine instantly plotting them into Google Calendar.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 w-full justify-center max-w-md">
@@ -116,79 +117,93 @@ export default function LandingPage() {
 
         {/* Feature Grid / Social Proof */}
         <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl w-full border-t border-slate-200 pt-16 dark:border-slate-800">
-          <div className="text-left bg-white bg-opacity-40 backdrop-blur-md p-6 rounded-2xl border border-slate-100 transition-all hover:bg-opacity-60 dark:bg-slate-800 dark:bg-opacity-40 dark:border-slate-700 dark:hover:bg-opacity-60">
-            <div className="h-10 w-10 bg-rose-50 rounded-lg flex items-center justify-center mb-4 dark:bg-rose-500/10">
-              <svg
-                className="w-5 h-5 text-rose-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                ></path>
-              </svg>
+          {/* Card 1: Automated Extraction */}
+          <div className="group relative text-left bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl p-8 rounded-3xl border border-white/20 dark:border-slate-800/60 shadow-lg transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-2xl hover:shadow-indigo-500/10 hover:border-indigo-500/30">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="relative z-10">
+              <div className="h-12 w-12 bg-rose-500/10 rounded-2xl flex items-center justify-center mb-6 border border-rose-500/20 dark:bg-rose-500/20">
+                <svg
+                  className="w-6 h-6 text-rose-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
+                Context Aware Engine
+              </h3>
+              <p className="text-base text-slate-500 leading-relaxed dark:text-slate-400">
+                No raw text parsers here. Our system reads whole emails,
+                deciphers timezone intents, and builds perfectly structured
+                event entries automatically.
+              </p>
             </div>
-            <h3 className="text-lg font-semibold text-slate-900 mb-2 dark:text-white">
-              Automated Extraction
-            </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              Stop manually typing dates. We read the email context and format
-              it perfectly.
-            </p>
           </div>
 
-          <div className="text-left bg-white bg-opacity-40 backdrop-blur-md p-6 rounded-2xl border border-slate-100 transition-all hover:bg-opacity-60 dark:bg-slate-800 dark:bg-opacity-40 dark:border-slate-700 dark:hover:bg-opacity-60">
-            <div className="h-10 w-10 bg-emerald-50 rounded-lg flex items-center justify-center mb-4 dark:bg-emerald-500/10">
-              <svg
-                className="w-5 h-5 text-emerald-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                ></path>
-              </svg>
+          {/* Card 2: Private Processing */}
+          <div className="group relative text-left bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl p-8 rounded-3xl border border-white/20 dark:border-slate-800/60 shadow-lg transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-purple-500/30 md:translate-y-4">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="relative z-10">
+              <div className="h-12 w-12 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/20 dark:bg-emerald-500/20">
+                <svg
+                  className="w-6 h-6 text-emerald-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                Air-Gapped Privacy
+              </h3>
+              <p className="text-base text-slate-500 leading-relaxed dark:text-slate-400">
+                Your corporate emails never touch an external machine learning
+                host. Processing happens 100% locally on your computer hardware.
+              </p>
             </div>
-            <h3 className="text-lg font-semibold text-slate-900 mb-2 dark:text-white">
-              100% Private Processing
-            </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              Your emails are processed entirely by a local AI model. No data is
-              sent to external servers.
-            </p>
           </div>
 
-          <div className="text-left bg-white bg-opacity-40 backdrop-blur-md p-6 rounded-2xl border border-slate-100 transition-all hover:bg-opacity-60 dark:bg-slate-800 dark:bg-opacity-40 dark:border-slate-700 dark:hover:bg-opacity-60">
-            <div className="h-10 w-10 bg-amber-50 rounded-lg flex items-center justify-center mb-4 dark:bg-amber-500/10">
-              <svg
-                className="w-5 h-5 text-amber-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                ></path>
-              </svg>
+          {/* Card 3: One-Click Sync */}
+          <div className="group relative text-left bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl p-8 rounded-3xl border border-white/20 dark:border-slate-800/60 shadow-lg transition-all duration-500 ease-out hover:-translate-y-3 hover:shadow-2xl hover:shadow-pink-500/10 hover:border-pink-500/30">
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-pink-500/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="relative z-10">
+              <div className="h-12 w-12 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-6 border border-amber-500/20 dark:bg-amber-500/20">
+                <svg
+                  className="w-6 h-6 text-amber-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3 dark:text-white group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors duration-300">
+                Intelligent Verification
+              </h3>
+              <p className="text-base text-slate-500 leading-relaxed dark:text-slate-400">
+                Review your AI predictions instantly on your clean central
+                control room interface, and synchronize seamlessly with a simple
+                execution hotkey.
+              </p>
             </div>
-            <h3 className="text-lg font-semibold text-slate-900 mb-2 dark:text-white">
-              One-Click Sync
-            </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              Review the extracted details and push them to Google Calendar
-              instantly.
-            </p>
           </div>
         </div>
       </main>
