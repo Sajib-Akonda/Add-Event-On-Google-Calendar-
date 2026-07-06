@@ -59,7 +59,7 @@ export default function LandingPage() {
             </svg>
           </div>
           <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Automatic Add Events to Google Calendar
+            Smart Auto Scheduler
           </span>
         </div>
         <div className="flex items-center gap-4">
