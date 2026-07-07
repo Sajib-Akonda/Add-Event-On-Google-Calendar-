@@ -1,6 +1,9 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-
+import GmailView from "../components/views/GmailView";
+import CalendarView from "../components/views/CalendarView";
+import SyncView from "../components/views/SyncView";
+import HistoryView from "../components/views/HistoryView";
 const THEME_STORAGE_KEY = "autoprep-theme";
 
 /** Reads/writes the color theme, persists it, syncs the `dark` class on <html> for Tailwind's class-based dark mode, and falls back to the OS preference on first load. */
@@ -162,26 +165,16 @@ function CursorGlow() {
   );
 }
 
-function Sidebar() {
+// 1. Add the props inside the parentheses here
+function Sidebar({ activeView, setActiveView }) {
   return (
     <aside className="z-20 flex w-64 flex-col justify-between border-r border-slate-200 bg-white/90 shadow-sm backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/90">
       <div>
         <div className="px-8 py-8">
           <h1 className="flex items-center gap-3 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 shadow-md shadow-indigo-200 dark:shadow-indigo-950">
-              <svg
-                className="h-5 w-5 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
+              <svg className="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
             Home
@@ -190,22 +183,28 @@ function Sidebar() {
 
         <nav className="mt-4 flex flex-col space-y-2 px-4" aria-label="Primary">
           {NAV_ITEMS.map(({ label, icon }) => (
-            <a
+            // 2. Changed <a> to <button> and added dynamic class rendering
+            <button
               key={label}
-              href="#"
-              className="group flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition-all hover:bg-indigo-50/80 hover:text-indigo-600 dark:text-slate-300 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-400"
+              onClick={() => setActiveView(label)}
+              className={`group flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all ${
+                activeView === label
+                  ? "bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
+                  : "text-slate-600 hover:bg-slate-100 hover:text-indigo-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-indigo-400"
+              }`}
             >
               <svg
-                className="h-5 w-5 text-slate-400 transition-colors group-hover:text-indigo-500 dark:text-slate-500 dark:group-hover:text-indigo-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
+                className={`h-5 w-5 transition-colors ${
+                  activeView === label
+                    ? "text-indigo-600 dark:text-indigo-400"
+                    : "text-slate-400 group-hover:text-indigo-500 dark:text-slate-500 dark:group-hover:text-indigo-400"
+                }`}
+                fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"
               >
                 {icon}
               </svg>
               {label}
-            </a>
+            </button>
           ))}
         </nav>
       </div>
@@ -215,19 +214,8 @@ function Sidebar() {
           to="/"
           className="group flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-500 transition-all hover:bg-rose-50/80 hover:text-rose-600 dark:text-slate-400 dark:hover:bg-rose-500/10 dark:hover:text-rose-400"
         >
-          <svg
-            className="h-5 w-5 text-slate-400 transition-colors group-hover:text-rose-500 dark:text-slate-500 dark:group-hover:text-rose-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-            />
+          <svg className="h-5 w-5 text-slate-400 transition-colors group-hover:text-rose-500 dark:text-slate-500 dark:group-hover:text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
           </svg>
           Sign out
         </Link>
@@ -401,27 +389,49 @@ function ChatComposer({ onSend }) {
 
 export default function Home() {
   const [theme, toggleTheme] = useTheme();
+  const [activeView, setActiveView] = useState("Gmail");
 
-  const handleSend = useCallback((text) => {
-    // TODO: wire this up to the calendar-event creation endpoint.
+  const handleSend = useCallback(async (text) => {
     console.log("Sending event data:", text);
+    
+    try {
+      //backend terminal output URL
+      const response = await fetch("http://localhost:8000/api/add-event", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt: text }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create event");
+      }
+
+      const data = await response.json();
+      console.log("Success! Event URL:", data.eventLink);
+      alert("Event added to your calendar!"); // Quick visual feedback for testing
+      
+    } catch (error) {
+      console.error("Error adding event:", error);
+      alert("Failed to add event. Check the console.");
+    }
   }, []);
 
   return (
     <div className="relative flex h-screen overflow-hidden bg-slate-50 font-sans text-slate-800 dark:bg-slate-950 dark:text-slate-200">
       <CursorGlow />
-      <Sidebar />
+    
+      <Sidebar activeView={activeView} setActiveView={setActiveView} />
 
       <div className="relative z-10 flex flex-1 flex-col bg-transparent">
-        <TopBar name="Sajib" theme={theme} onToggleTheme={toggleTheme} />
+        <TopBar name="UserName" theme={theme} onToggleTheme={toggleTheme} />
 
-        <main className="relative z-10 flex-1 overflow-y-auto p-8">
-          <div className="flex h-full flex-col items-center text-slate-500 dark:text-slate-400">
-            <h2 className="mb-8 mt-8 text-3xl font-bold text-slate-900 dark:text-white">
-              Welcome Sajib
-            </h2>
-            <div className="flex flex-1 flex-col items-center justify-center" />
-          </div>
+        <main className="relative z-10 flex-1 overflow-y-auto p-4 sm:p-8">
+          {activeView === "Gmail" && <GmailView />}
+          {activeView === "Calendar" && <CalendarView />}
+          {activeView === "Background Sync" && <SyncView />}
+          {activeView === "History" && <HistoryView />}
         </main>
 
         <ChatComposer onSend={handleSend} />
